@@ -146,10 +146,9 @@ Result: NotificationResult[success=true, provider=FcmMock, messageId=fcm-1765755
 Async result: NotificationResult[success=true, provider=SendGridMock, messageId=sg-1765755215042, errorMessage=null]
 ```
 
-## Example Output
+## Security
 - **Credentials:** Inject programmatically; do not store in source code.
 - **Validation:** All messages and recipients are validated before sending.
-- **Retry:** Only operational failures are retried, preventing repeated invalid data sending.
 
 ## Notes
 - The library is extensible: new providers can be added by implementing `NotificationSender`.
