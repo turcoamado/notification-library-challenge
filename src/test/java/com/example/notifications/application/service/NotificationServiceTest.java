@@ -1,7 +1,7 @@
 package com.example.notifications.application.service;
 
 import com.example.notifications.application.dto.NotificationResult;
-import com.example.notifications.domain.exception.NotificationException;
+import com.example.notifications.domain.exception.ValidationException;
 import com.example.notifications.domain.model.NotificationMessage;
 import com.example.notifications.domain.model.Recipient;
 import com.example.notifications.application.port.out.NotificationSender;
@@ -66,7 +66,7 @@ public class NotificationServiceTest {
         factory.register("email:mock", mockSender);
         NotificationService service = new NotificationService(factory);
 
-        assertThrows(NotificationException.class, () ->
+        assertThrows(ValidationException.class, () ->
                 service.send(
                         "email:mock",
                         email,

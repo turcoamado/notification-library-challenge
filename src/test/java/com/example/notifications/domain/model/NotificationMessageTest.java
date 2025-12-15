@@ -1,5 +1,6 @@
 package com.example.notifications.domain.model;
 
+import com.example.notifications.domain.exception.NotificationException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,7 +10,7 @@ public class NotificationMessageTest {
 
     @Test
     public void shouldFailWhenBuildingNotificationWithoutChannel() {
-        IllegalStateException ex = assertThrows(IllegalStateException.class, () ->
+        NotificationException ex = assertThrows(NotificationException.class, () ->
                 new NotificationMessage.Builder()
                         .body("body")
                         .build()
@@ -20,7 +21,7 @@ public class NotificationMessageTest {
 
     @Test
     public void shouldFailWhenBuildingWithoutBody() {
-        IllegalStateException ex = assertThrows(IllegalStateException.class, () ->
+        NotificationException ex = assertThrows(NotificationException.class, () ->
                 new NotificationMessage.Builder()
                         .channel(Channel.EMAIL)
                         .build()

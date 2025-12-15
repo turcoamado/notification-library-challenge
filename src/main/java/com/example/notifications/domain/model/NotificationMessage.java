@@ -1,5 +1,6 @@
 package com.example.notifications.domain.model;
 
+import com.example.notifications.domain.exception.NotificationException;
 import lombok.Getter;
 
 @Getter
@@ -24,8 +25,8 @@ public final class NotificationMessage {
         public Builder body(String body) { this.body = body; return this; }
 
         public NotificationMessage build() {
-            if (channel == null) throw new IllegalStateException("Channel is required");
-            if (body == null || body.isBlank()) throw new IllegalStateException("Body is required");
+            if (channel == null) throw new NotificationException("Channel is required");
+            if (body == null || body.isBlank()) throw new NotificationException("Body is required");
             return new NotificationMessage(this);
         }
     }

@@ -1,6 +1,6 @@
 package com.example.notifications.domain.util;
 
-import com.example.notifications.domain.exception.NotificationException;
+import com.example.notifications.domain.exception.ValidationException;
 import com.example.notifications.domain.model.Channel;
 import com.example.notifications.domain.model.NotificationMessage;
 import com.example.notifications.domain.model.Recipient;
@@ -19,7 +19,7 @@ public class ValidationUtilsTest {
                 .body("This is an email for testing purposes.")
                 .build();
 
-        NotificationException ex = assertThrows(NotificationException.class, () ->
+        ValidationException ex = assertThrows(ValidationException.class, () ->
                 ValidationUtils.validate(email, new Recipient("invalidmail.com"))
         );
         assertEquals("Invalid email", ex.getMessage());
@@ -32,7 +32,7 @@ public class ValidationUtilsTest {
                 .body("This is an email for testing purposes.")
                 .build();
 
-        NotificationException ex = assertThrows(NotificationException.class, () ->
+        ValidationException ex = assertThrows(ValidationException.class, () ->
                 ValidationUtils.validate(email, new Recipient("user@example.com"))
         );
         assertEquals("Email subject required", ex.getMessage());
@@ -45,7 +45,7 @@ public class ValidationUtilsTest {
                 .body("This is a sms for testing purposes.")
                 .build();
 
-        NotificationException ex = assertThrows(NotificationException.class, () ->
+        ValidationException ex = assertThrows(ValidationException.class, () ->
                 ValidationUtils.validate(sms, new Recipient("123asdf234"))
         );
         assertEquals("Invalid phone", ex.getMessage());
@@ -58,7 +58,7 @@ public class ValidationUtilsTest {
                 .body("This is a push notification for testing purposes.")
                 .build();
 
-        NotificationException ex = assertThrows(NotificationException.class, () ->
+        ValidationException ex = assertThrows(ValidationException.class, () ->
                 ValidationUtils.validate(push, new Recipient("1234"))
         );
         assertEquals("Invalid device token", ex.getMessage());

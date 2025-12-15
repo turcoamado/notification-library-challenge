@@ -1,6 +1,6 @@
 package com.example.notifications.domain.util;
 
-import com.example.notifications.domain.exception.NotificationException;
+import com.example.notifications.domain.exception.ValidationException;
 import com.example.notifications.domain.model.NotificationMessage;
 import com.example.notifications.domain.model.Recipient;
 
@@ -15,20 +15,20 @@ public class ValidationUtils {
         switch (message.getChannel()) {
             case EMAIL:
                 if (!isValidEmail(recipient.to())) {
-                    throw new NotificationException("Invalid email");
+                    throw new ValidationException("Invalid email");
                 }
                 if (message.getSubject() == null || message.getSubject().isBlank()) {
-                    throw new NotificationException("Email subject required");
+                    throw new ValidationException("Email subject required");
                 }
                 break;
             case SMS:
                 if (!isValidPhone(recipient.to())) {
-                    throw new NotificationException("Invalid phone");
+                    throw new ValidationException("Invalid phone");
                 }
                 break;
             case PUSH:
                 if (recipient.to().length() < DEVICE_TOKEN_LENGTH) {
-                    throw new NotificationException("Invalid device token");
+                    throw new ValidationException("Invalid device token");
                 }
                 break;
             default: break;
