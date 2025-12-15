@@ -1,0 +1,51 @@
+# =======================
+# Compile files
+# =======================
+/build/
+/out/
+/target/
+
+# =======================
+# IDE files
+# =======================
+# IntelliJ
+/.idea/
+/*.iml
+/.gradle/
+/*.ipr
+/*.iws
+
+# Eclipse
+/.classpath
+/.project
+/.settings/
+
+# VS Code
+/.vscode/
+
+# =======================
+# File system
+# =======================
+.DS_Store
+Thumbs.db
+*.log
+
+# =======================
+# External dependencies
+# =======================
+/*.jar
+/*.war
+/*.ear
+
+# =======================
+# Local configuration files
+# =======================
+/local.properties
+
+# =======================
+# Credentials / secrets
+# =======================
+*.env
+*.properties
+*.yml
+*.yaml
